@@ -1,3 +1,12 @@
 {
-  "extends": "astro/tsconfigs/strict"
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    // Other compiler options...
+
+    "baseUrl": ".", // This should point to the root directory of your project
+    "paths": {
+      "@/*": ["src/_components/*"],
+      "#/*": ["src/layouts/*"],
+    }
+  }
 }
