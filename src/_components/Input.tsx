@@ -1,5 +1,6 @@
 import { useState } from "react";
-import {BsSearch} from 'react-icons/bs'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 const Input = () => {
   const [search, setSearch] = useState<string>("");
 
@@ -8,7 +9,7 @@ const Input = () => {
       <input
         name="search"
         id="search"
-        className="outline-none ring-0 border border-black px-2 py-1 grow flex flex-col rounded-md"
+        className="outline-none w-10/12 ring-0 border border-black px-2 py-1 flex flex-col rounded-md"
         type="text"
         value={search}
         onChange={(e) => {
@@ -24,11 +25,11 @@ const Input = () => {
         href={`/news?q=${search}`}
         className={
           typeof search !== "undefined" && search.length > 0
-            ? "bg-black text-white p-1 rounded-full aspect-square w-9 flex items-center justify-center"
+            ? "bg-blue-700 text-white p-1 rounded-full aspect-square w-8 flex items-center justify-center"
             : "hidden"
         }
       >
-        🔍
+        <FontAwesomeIcon icon={faMagnifyingGlass} style={{color:'ffffff'}} />
       </a>
     </div>
   );
