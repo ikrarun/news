@@ -1,20 +1,20 @@
 ---
 import Layout from '#/Layout.astro';
 import { Image } from 'astro:assets';
-import logo from '@/logo.svg'
+import logo from '@/logo.png'
 import Input from '@/Input';
 ---
 
 <Layout title="IN News">
-	<main class="flex flex-col w-full h-full">
-	<section class="sm:grid h-full sm:grid-cols-2">
+	<main class="flex flex-col justify-center sm:justify-normal w-full h-full">
+	<section class="sm:grid flex flex-col-reverse sm:h-full h-fit sm:grid-cols-2">
 		<div class="w-full flex gap-2 flex-col items-start justify-center h-full">
+			<Input client:load/>
 			<h1 class='text-3xl font-semibold'>Welcome to IN News </h1>
 			<h1 class='text-lg font-normal'>Stay updated with the latest news from around the Indian Continent.</h1>
 			<a class='bg-black p-2 rounded-md text-white' href="/headlines">Explore Headlines</a>
-      <Input client:only/>
 		</div>
-		<div class="w-full flex gap-2 flex-col items-center justify-center h-full">
+		<div class="sm:w-full w-1/2 flex gap-2 flex-col items-center justify-center h-fit sm:h-full">
 			<Image src={logo} alt="Logo" width="300" height="300" quality='max'/>
 		</div>
 	</section>
