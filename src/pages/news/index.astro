@@ -12,7 +12,7 @@ const response = await fetch(
 );
 const data = await response.json();
 
-const articles = data.code ? null : ((await data.articles) as NewsArticle[]);
+const articles = (await data.code) ? null : ((await data.articles) as NewsArticle[]);
 ---
 
 <Layout title="Explore : In News">
