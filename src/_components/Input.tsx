@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import {BsSearch} from 'react-icons/bs'
 const Input = () => {
   const [search, setSearch] = useState<string>("");
 
@@ -28,7 +28,7 @@ const Input = () => {
             : "hidden"
         }
       >
-        🔍
+        <BsSearch client:load/>
       </a>
     </div>
   );
