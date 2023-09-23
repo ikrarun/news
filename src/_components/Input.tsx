@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import toast, { Toaster } from "react-hot-toast";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-const Input = ({ data }: { data: string | null }) => {
+const Input = ({ data,page }: { data: string | null , page:number }) => {
   const [search, setSearch] = useState<string>(data ? data : "");
   const notify = () => {
     toast.dismiss();
@@ -27,16 +27,16 @@ const Input = ({ data }: { data: string | null }) => {
         }}
         onKeyDown={(e) => {
           if (e.key === "Enter" && search.trim().length > 0) {
-            window.location.href = `/news?q=${search}`;
-          } else {
+            window.location.href = `/news?q=${search}&page=${page}`;
+          } else if(e.key === "Enter" && !(search.trim().length > 0)) {
             notify();
           }
         }}
       />
       <button
-        onClick={(e) => {
+        onClick={() => {
           if (search.trim().length > 0) {
-            window.location.href = `/news?q=${search}`;
+            window.location.href = `/news?q=${search}&page=${page}`;
           } else {
             notify();
           }
