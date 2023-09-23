@@ -8,8 +8,8 @@ const articles = await data.articles as NewsArticle[];
 ---
 
 <Layout title="Explore : In News">
-	<main class="grid pt-16 pb-2 break-before-all grid-auto-flow grid-cols-2 w-full place-items-stretch gap-3 h-full">
-        {articles.map((data:NewsArticle)=>(
+	<main class="grid pt-20 pb-4 grid-cols-1 [&:nth-child(5)]:col-span-2 sm:grid-cols-2 w-full place-items-stretch gap-3 h-full">
+    {articles.map((data:NewsArticle)=>(
           <Cards article={data} />
         ))}
 	</main>

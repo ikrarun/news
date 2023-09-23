@@ -1,32 +1,50 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import toast, { Toaster } from "react-hot-toast";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-const Input = () => {
-  const [search, setSearch] = useState<string>("");
+
+const Input = ({ data }: { data: string | null }) => {
+  const [search, setSearch] = useState<string>(data ? data : "");
+  const notify = () => {
+    toast.dismiss();
+    toast.error("Please input something to search", {
+      position: "bottom-left",
+    });
+  };
 
   return (
-    <div className="flex w-full flex-row gap-2">
+    <div className="flex text-gray-800 w-full flex-row gap-2">
+      <Toaster />
       <input
         name="search"
         id="search"
-        className="outline-none w-10/12 ring-0 border border-black px-2 py-1 flex flex-col rounded-md"
+        className="outline-none grow placeholder:text-gray-500 ring-0 border border-gray-800 px-2 py-1 flex flex-col rounded-md"
         type="text"
+        placeholder="eg. Daily"
         value={search}
         onChange={(e) => {
           setSearch(e.target.value);
         }}
         onKeyDown={(e) => {
-          if (e.key === "Enter") {
+          if (e.key === "Enter" && search.trim().length > 0) {
             window.location.href = `/news?q=${search}`;
+          } else {
+            notify();
           }
         }}
       />
-      <a
-        href={`/news?q=${search}`}
-        className="bg-black text-white p-1 rounded-full aspect-square w-8 flex items-center justify-center"
+      <button
+        onClick={(e) => {
+          if (search.trim().length > 0) {
+            window.location.href = `/news?q=${search}`;
+          } else {
+            notify();
+          }
+        }}
+        className="bg-base text-white p-1 rounded-full aspect-square w-8 flex items-center justify-center"
       >
         <FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: "ffffff" }} />
-      </a>
+      </button>
     </div>
   );
 };

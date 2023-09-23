@@ -1,34 +1,41 @@
 ---
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
-import Header from '@/header.astro'
+import Header from "@/header.astro";
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Crafted with love By Kr Arun" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href="/favicon.png" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body class="flex flex-col h-[100dvh]">
-		<Header/>
-		<div class="max-w-[900px] mx-auto grow px-4 w-full">
-			<slot />
-		</div>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Crafted with love By Kr Arun" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="flex flex-col">
+    <Header />
+    <div class="max-w-[900px] mx-auto grow flex flex-col px-4 w-full">
+      <slot />
+    </div>
+  </body>
 </html>
 
-
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Raleway&display=swap');
-	:root{
-		font-family: 'Raleway', sans-serif;
-	}
+  @import url("https://fonts.googleapis.com/css2?family=Nunito&family=Raleway&display=swap");
+  :root {
+    font-family: "Raleway", sans-serif;
+  }
+  :root {
+    scroll-behavior: smooth;
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none;
+  }
+  :root::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
 </style>
