@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Icon } from 'astro-icon'
+import {BsSearch} from 'react-icons/bs'
 const Input = () => {
   const [search, setSearch] = useState<string>("");
 
@@ -28,7 +28,7 @@ const Input = () => {
             : "hidden"
         }
       >
-        <Icon icon="bx:search-alt"/>
+        🔍
       </a>
     </div>
   );
